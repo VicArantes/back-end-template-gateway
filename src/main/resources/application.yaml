@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: template-gateway
+
+  cache:
+    cache-names: ${spring.application.name}-cache
+    caffeine:
+      spec: maximumSize=100
+    type: caffeine
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+
+  config:
+    import: local.yaml
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Template Auth
+        url: /template-auth/v3/api-docs
+      - name: Template Core
+        url: /template-core/v3/api-docs
