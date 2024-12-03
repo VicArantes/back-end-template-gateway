@@ -11,8 +11,9 @@ Antes de iniciar as aplicações, certifique-se de configurar as seguintes vari�
 3. `DB_USERNAME`: Username para o banco de dados.
 4. `EMAIL_SENDER`: E-mail responsável para enviar emails.
 5. `EMAIL_SENDER_PASSWORD`: A senha do e-mail.
+6. `JWT_SECRET`: Com um base64 válido.
 
-Certifique-se de definir essas variáveis de ambiente de acordo com os requisitos do sistema e da aplicação.
+Certifique-se de definir essas variáveis de ambiente conforme os requisitos do sistema e da aplicação.
 
 ## Subindo as Aplicações
 
@@ -30,5 +31,4 @@ Certifique-se de iniciar essas aplicações na ordem correta para garantir que o
 Aqui estão algumas URLs importantes para acesso aos serviços:
 
 - [URL do Eureka](http://localhost:8080/): Serviço de descoberta de microservices (Eureka).
-- [URL do Swagger para o template Core](http://localhost:8081/template-core/swagger-ui/index.html#/): Documentação interativa para o serviço template Core.
-- [URL do Swagger para o template Auth](http://localhost:8081/template-auth/swagger-ui/index.html#/): Documentação interativa para o serviço template Auth.
+- [URL do Swagger](http://localhost:8081/webjars/swagger-ui/index.html): Documentação interativa da aplicação template.
