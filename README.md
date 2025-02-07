@@ -12,6 +12,8 @@ Antes de iniciar as aplicações, certifique-se de configurar as seguintes vari�
 4. `EMAIL_SENDER`: E-mail responsável para enviar emails.
 5. `EMAIL_SENDER_PASSWORD`: A senha do e-mail.
 6. `JWT_SECRET`: Com um base64 válido.
+7. `AUTH_API_KEY`: Com uma chave para ser utilizada pelo serviço de autenticação da aplicação.
+8. `CORE_API_KEY`: Com uma chave para ser utilizada pelo serviço base da aplicação.
 
 Certifique-se de definir essas variáveis de ambiente conforme os requisitos do sistema e da aplicação.
 
