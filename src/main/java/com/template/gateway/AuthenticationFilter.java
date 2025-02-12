@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
@@ -42,7 +44,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         return (exchange, chain) -> {
             String token = exchange.getRequest().getHeaders().getFirst("Authorization");
 
-            if (exchange.getRequest().getURI().getPath().contains("v3/api-docs")) {
+            if (exchange.getRequest().getURI().getPath().contains("v3/api-docs") || exchange.getRequest().getURI().getPath().contains("api/auth/login")) {
                 return chain.filter(exchange);
             }
 
@@ -53,15 +55,14 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             return webClientBuilder.build()
                     .put()
-                    .uri("http://TEMPLATE-AUTH/api/auth/validate/" + token.replace("Bearer ", ""))
+                    .uri("http://TEMPLATE-AUTH/template-auth/api/auth/validate/" + token.replace("Bearer ", ""))
                     .body(BodyInserters.fromValue(Map.of("path", exchange.getRequest().getURI().getPath())))
                     .exchangeToMono(response -> {
                         if (response.statusCode().isError()) {
                             throw new JWTValidationException(response.statusCode().toString());
                         }
                         String serviceToken = generateServiceToken(exchange.getRequest().getURI().getPath());
-                        exchange.getRequest().mutate().header("X-Service-Token", serviceToken).build();
-                        return chain.filter(exchange);
+                        return chain.filter(buildExchange(exchange, serviceToken));
                     })
                     .onErrorResume(clientResponse -> {
                         LOG.error("{} - {} - [{}]", CLASS, VALIDATION_TOKEN_FAILED, clientResponse.getMessage());
@@ -70,12 +71,20 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         };
     }
 
+    private ServerWebExchange buildExchange(ServerWebExchange exchange, String serviceToken) {
+        ServerHttpRequest request = exchange.getRequest().mutate()
+                .header("X-Service-Token", serviceToken)
+                .build();
+
+        return exchange.mutate().request(request).build();
+    }
+
     private String generateServiceToken(String path) {
         try {
             return ApiKey.getKey(path,
                     Map.of(
-                            "auth", authApiKey,
-                            "core", coreApiKey
+                            "template-auth", authApiKey,
+                            "template-core", coreApiKey
                     )
             );
         } catch (IllegalAccessException e) {
