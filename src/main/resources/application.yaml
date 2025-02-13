@@ -3,6 +3,15 @@ api:
     auth: ${AUTH_API_KEY}
     core: ${CORE_API_KEY}
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}
+
+logging:
+  file:
+    name: ${LOG_PATH}/${spring.application.name}.log
+
 server:
   port: 8081
 
@@ -22,9 +31,6 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
-
-  config:
-    import: local.yaml
 
 springdoc:
   swagger-ui:
