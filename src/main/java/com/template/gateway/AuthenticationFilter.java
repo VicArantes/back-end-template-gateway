@@ -24,11 +24,11 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-    @Value("${api.keys.auth}")
-    private String authApiKey;
+    @Value("${api.keys.template-auth}")
+    private String templateAuthApiKey;
 
-    @Value("${api.keys.core}")
-    private String coreApiKey;
+    @Value("${api.keys.template-core}")
+    private String templateCoreApiKey;
 
     public AuthenticationFilter() {
         super(Config.class);
@@ -83,8 +83,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         try {
             return ApiKey.getKey(path,
                     Map.of(
-                            "template-auth", authApiKey,
-                            "template-core", coreApiKey
+                            "template-auth", templateAuthApiKey,
+                            "template-core", templateCoreApiKey
                     )
             );
         } catch (IllegalAccessException e) {

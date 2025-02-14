@@ -7,16 +7,16 @@ Este guia contém instruções sobre como configurar as variáveis de ambiente n
 Antes de iniciar as aplicações, certifique-se de configurar as seguintes variáveis de ambiente:
 
 1. `ADMIN_PASSWORD`: Senha para o administrador.
-2. `AUTH_API_KEY`: Chave secreta para o microservice de autenticação.
-3. `CORE_API_KEY`: Chave secreta para o microservice central.
-4. `DB_PASSWORD`: Senha para o banco de dados.
-5. `DB_URL`: URL do banco de dados.
-6. `DB_USERNAME`: Username para o banco de dados.
-7. `EMAIL_SENDER`: E-mail responsável para enviar e-mails.
-8. `EMAIL_SENDER_PASSWORD`: A senha do e-mail.
-9. `EUREKA_URL`: URL onde está o registry das aplicações.
-10. `JWT_SECRET`: Com um base64 válido.
-11. `LOG_PATH`: Caminho para a geração dos logs.
+2. `DB_PASSWORD`: Senha para o banco de dados.
+3. `DB_URL`: URL do banco de dados.
+4. `DB_USERNAME`: Username para o banco de dados.
+5. `EMAIL_SENDER`: E-mail responsável para enviar e-mails.
+6. `EMAIL_SENDER_PASSWORD`: A senha do e-mail.
+7. `EUREKA_URL`: URL onde está o registry das aplicações.
+8. `JWT_SECRET`: Com um base64 válido.
+9. `LOG_PATH`: Caminho para a geração dos logs.
+10. `TEMPLATE_AUTH_API_KEY`: Chave secreta para o microservice de autenticação.
+11. `TEMPLATE_CORE_API_KEY`: Chave secreta para o microservice central.
 
 Certifique-se de definir essas variáveis de ambiente conforme os requisitos do sistema e da aplicação.
 
