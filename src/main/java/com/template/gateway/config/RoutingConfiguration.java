@@ -1,16 +1,15 @@
-package com.template.gateway;
+package com.template.gateway.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@RequiredArgsConstructor
 public class RoutingConfiguration {
-
-    @Autowired
-    private AuthenticationFilter authenticationFilter;
+    private final AuthenticationFilter authenticationFilter;
 
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
@@ -22,4 +21,5 @@ public class RoutingConfiguration {
                 )
                 .build();
     }
+
 }

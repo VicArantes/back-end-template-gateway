@@ -1,4 +1,4 @@
-package com.template.gateway;
+package com.template.gateway.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
