@@ -10,11 +10,13 @@ Antes de iniciar as aplicações, certifique-se de configurar as seguintes vari�
 2. `DB_PASSWORD`: Senha para o banco de dados.
 3. `DB_URL`: URL do banco de dados.
 4. `DB_USERNAME`: Username para o banco de dados.
-5. `EMAIL_SENDER`: E-mail responsável para enviar emails.
+5. `EMAIL_SENDER`: E-mail responsável para enviar e-mails.
 6. `EMAIL_SENDER_PASSWORD`: A senha do e-mail.
 7. `EUREKA_URL`: URL onde está o registry das aplicações.
 8. `JWT_SECRET`: Com um base64 válido.
 9. `LOG_PATH`: Caminho para a geração dos logs.
+10. `TEMPLATE_AUTH_API_KEY`: Chave secreta para o microservice de autenticação.
+11. `TEMPLATE_CORE_API_KEY`: Chave secreta para o microservice central.
 
 Certifique-se de definir essas variáveis de ambiente conforme os requisitos do sistema e da aplicação.
 

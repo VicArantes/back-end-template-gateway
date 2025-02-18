@@ -1,3 +1,8 @@
+api:
+  keys:
+    template-auth: ${TEMPLATE_AUTH_API_KEY}
+    template-core: ${TEMPLATE_CORE_API_KEY}
+
 eureka:
   client:
     serviceUrl:
@@ -31,6 +36,6 @@ springdoc:
   swagger-ui:
     urls:
       - name: Template Auth
-        url: /template-auth/v3/api-docs
+        url: /template-auth/template-auth/v3/api-docs
       - name: Template Core
-        url: /template-core/v3/api-docs
+        url: /template-core/template-core/v3/api-docs
