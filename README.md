@@ -36,4 +36,4 @@ Certifique-se de iniciar essas aplicações na ordem correta para garantir que o
 Aqui estão algumas URLs importantes para acesso aos serviços:
 
 - [URL do Eureka](http://localhost:8080/): Serviço de descoberta de microservices (Eureka).
-- [URL do Swagger](http://localhost:8081/webjars/swagger-ui/index.html): Documentação interativa da aplicação template.
+- [URL do Swagger](http://localhost:8081/swagger-ui/index.html): Documentação interativa da aplicação template.
